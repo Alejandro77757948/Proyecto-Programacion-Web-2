@@ -1,0 +1,72 @@
+<!--HEADER-->
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark"  >
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/home">{{pagina1.principal}}</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a (click) = "setColor1('nav-link active')" [class]="enlace1.text_color"  routerLink="/documentos">{{pagina1.documentos}}</a>
+          </li>
+          <li class="nav-item">
+            <a (click) = "setColor2('nav-link active')" [class]="enlace2.text_color" routerLink="/becas">{{pagina1.becas}}</a>
+          </li>
+          <li class="nav-item">
+            <a (click) = "setColor3('nav-link active')" [class]="enlace3.text_color" routerLink="/informacion">{{pagina1.informacion}}</a>
+          </li>
+          <form class="d-flex" role="search">
+            <input #txtDepa class="form-control me-2" type="text" placeholder="Coloque su departamento" aria-label="Search">
+          </form>
+          <button (click)= "setDepartamento(txtDepa.value)"class="btn btn-outline-success" type="submit">Buscar</button>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--FIN HEADER-->
+  <div class="container">
+    <div class="card-group">
+        <div class="card border-primary mb-3" style="max-width: 18rem;">
+            <div class="card-header">
+                FaceBook
+            </div>
+            <div class="card-body text-primary">
+              <h5 class="card-title">{{admin.face}}</h5>
+              <p class="card-text">Contacto FaceBook.</p>
+            </div>
+        </div>
+        <div class="card border-success mb-3" style="max-width: 18rem;">
+            <div class="card-header">
+                WhatsApp
+            </div>
+            <div class="card-body text-success">
+              <h5 class="card-title">{{admin.nro}}</h5>
+              <p class="card-text">Contacto WhatsApp.</p>
+            </div>
+        </div>
+        <div class="card border-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">
+                Correo
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{admin.correo}}</h5>
+              <p class="card-text">Contacto Correo.</p>
+            </div>
+        </div>
+    </div>
+  </div>
+
+<!--FOOTER-->
+<div class="container">
+    <footer class="py-3 my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a routerLink="/home" class="nav-link px-2 text-body-secondary">{{pagina1.principal}}</a></li>
+        <li class="nav-item"><a routerLink="/documentos" class="nav-link px-2 text-body-secondary">{{pagina1.documentos}}</a></li>
+        <li class="nav-item"><a routerLink="/becas" class="nav-link px-2 text-body-secondary">{{pagina1.becas}}</a></li>
+        <li class="nav-item"><a routerLink="/informacion" class="nav-link px-2 text-body-secondary">{{pagina1.informacion}}</a></li>
+      </ul>
+      <p class="text-center text-body-secondary">© 2023 {{pagina1.title}}, Inc</p>
+    </footer> 
+</div>
+<!--FIN FOOTER-->

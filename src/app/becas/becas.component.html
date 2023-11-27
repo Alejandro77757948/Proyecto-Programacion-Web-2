@@ -1,0 +1,240 @@
+<!--HEADER-->
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark"  >
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/home">{{pagina1.principal}}</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a (click) = "setColor1('nav-link active')" [class]="enlace1.text_color"  routerLink="/documentos">{{pagina1.documentos}}</a>
+          </li>
+          <li class="nav-item">
+            <a (click) = "setColor2('nav-link active')" [class]="enlace2.text_color" routerLink="/becas">{{pagina1.becas}}</a>
+          </li>
+          <li class="nav-item">
+            <a (click) = "setColor3('nav-link active')" [class]="enlace3.text_color" routerLink="/informacion">{{pagina1.informacion}}</a>
+          </li>
+          <form class="d-flex" role="search">
+            <input #txtDepa class="form-control me-2" type="text" placeholder="Coloque su departamento" aria-label="Search">
+          </form>
+          <button (click)= "setDepartamento(txtDepa.value)"class="btn btn-outline-success" type="submit">Buscar</button>
+        </ul>
+      </div>
+    </div>
+</nav>
+<!--FIN HEADER-->
+<!--TARJETAS-->
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col" *ngFor="let becas of bequitas">
+      <div class="card">
+        <img [src]="becas.srcBeca" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{becas.nombre}}</h5>
+          <p class="card-text">{{becas.descripcion}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--FIN TARJETAS-->
+
+<br>
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">USUARIOS ACTIVOS</h4>
+  <p>Para aparecer en la pagina necesitas iniciar sesion</p>
+  <hr>
+  <p class="mb-0">Llena el formulario con los datos necesarios. 
+    <!-- Button trigger modal -->
+    <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="alert-link">click aqui</a>.
+  </p>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Iniciar Sesion</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="card">
+          <form action="" (ngSubmit)="crearUsuario(cero.value, uno.value, dos.value, tres.value, cuatro.value, cinco.value, seis.value)">
+            <div class="card-body">
+              <div class="mb-2">
+                <label class="form-label">
+                  Carnet de Identidad:
+                </label>
+                <input #cero type="text" class="form-control" placeholder="Ingrese su ci" name="ci" [(ngModel)] ="nuevoUser.ci">
+              </div>
+              <div class="mb-2">
+                <label class="form-label">
+                  Nombre:
+                </label>
+                <input #uno type="text" class="form-control" placeholder="Ingrese su nombre" name="nom" [(ngModel)] ="nuevoUser.nombre">
+              </div>
+              <div class="mb-2">
+                <label class="form-label">
+                  Apellido Paterno:
+                </label>
+                <input #dos type="text" class="form-control" placeholder="Ingrese su apellido paterno" name="pat" [(ngModel)] ="nuevoUser.paterno">
+              </div>
+              <div class="mb-2">
+                <label class="form-label">
+                  Apellido Materno:
+                </label>
+                <input #tres type="text" class="form-control" placeholder="Ingrese su apellido materno" name="mat" [(ngModel)] ="nuevoUser.materno">
+              </div>
+              <div class="mb-2">
+                <label class="form-label">
+                  Fecha de Nacimiento:
+                </label>
+                <input #cuatro type="text" class="form-control" placeholder="Ingrese su fecha de Nacimiento" name="fec" [(ngModel)] ="nuevoUser.fechanaci">
+              </div>
+              <div class="mb-2">
+                <label class="form-label">
+                  Departamento:
+                </label>
+                <input #cinco type="text" class="form-control" placeholder="Ingrese su departamento" name="dep" [(ngModel)] ="nuevoUser.departamento">
+              </div>
+              <div class="mb-2">
+                <label class="form-label">
+                  Imagen:
+                </label>
+                <input #seis type="number" class="form-control" placeholder="Ingrese su imagen" name="img" [(ngModel)] ="nuevoUser.imgUser">
+              </div>
+            </div>
+            <!--IMAGENES-->
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+              <div class="col">
+                <div class="card">
+                  <img [src]="imagenesUsuarios.a" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Nro. 1</h5>                  
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <img [src]="imagenesUsuarios.b" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Nro. 2</h5>                  
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <img [src]="imagenesUsuarios.c" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Nro. 3</h5>                  
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <img [src]="imagenesUsuarios.d" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Nro. 4</h5>                  
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <img [src]="imagenesUsuarios.e" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Nro. 5</h5>                  
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <img [src]="imagenesUsuarios.f" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Nro. 6</h5>                  
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <img [src]="imagenesUsuarios.g" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Nro. 7</h5>                  
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <img [src]="imagenesUsuarios.h" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Nro. 8</h5>                  
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <img [src]="imagenesUsuarios.i" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Nro. 9</h5>                  
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--FIN IMAGENES-->
+            <div class="modal-footer">
+              <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>-->
+              
+            </div>
+            <button type="button" class="btn btn-primary mt-2" (click)="crearUsuario(cero.value, uno.value, dos.value, tres.value, cuatro.value, cinco.value, seis.value)">Guardar</button>
+
+          </form>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{nuevoUser.nombre}} {{nuevoUser.paterno}} {{nuevoUser.materno}}</h5>
+            <p class="card-text">
+              <strong>Carnet:</strong> {{nuevoUser.ci}}<br>
+              <strong>Departamento:</strong> {{nuevoUser.departamento}}<br>
+              <strong>Fecha de Nacimiento:</strong> {{nuevoUser.fechanaci}}<br>
+            </p>
+          </div>
+          <div class="card-footer">
+            <small class="text-body-secondary">Activo</small>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card-group">
+  <div class="card" *ngFor=" let persona of personitas">
+    <img [src]="persona.imgUser" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{persona.nombre}} {{persona.paterno}} {{persona.materno}}</h5>
+      <p class="card-text">
+        <strong>Carnet:</strong> {{persona.ci}}<br>
+        <strong>Departamento:</strong> {{persona.departamento}}<br>
+        <strong>Fecha de Nacimiento:</strong> {{persona.fechanaci}}<br>
+      </p>
+    </div>
+    <div class="card-footer">
+      <small class="text-body-secondary">Activo</small>
+    </div>
+  </div>  
+</div>
+<!--FIN USUARIOS-->
+
+<!--FOOTER-->
+<div class="container">
+    <footer class="py-3 my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a routerLink="/home" class="nav-link px-2 text-body-secondary">{{pagina1.principal}}</a></li>
+        <li class="nav-item"><a routerLink="/documentos" class="nav-link px-2 text-body-secondary">{{pagina1.documentos}}</a></li>
+        <li class="nav-item"><a routerLink="/becas" class="nav-link px-2 text-body-secondary">{{pagina1.becas}}</a></li>
+        <li class="nav-item"><a routerLink="/informacion" class="nav-link px-2 text-body-secondary">{{pagina1.informacion}}</a></li>
+      </ul>
+      <p class="text-center text-body-secondary">© 2023 {{pagina1.title}}, Inc</p>
+    </footer> 
+  </div>
+  <!--FIN FOOTER-->
